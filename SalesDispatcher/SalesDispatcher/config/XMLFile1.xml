@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SqlRoot>
+  <SqlList name="sqlServer">
+    
+  </SqlList>
+  <SqlList name="mySql">
+    <SqlCmd name="SearchGoodsByName">
+      <CmdLine>
+        <![CDATA[
+		select good.Code,good.Name as GoodsName,good.Numbers as StockNum,info.SalePrice as Price from Tb_Goods good left join Tb_GoodsInfo info
+    on good.Id=info.GoodsId
+    where 1=1 @whereStr 
+	]]>
+      </CmdLine>
+      <param name="@whereStr" type="string"/>
+    </SqlCmd>
+
+    <SqlCmd name="InsertGoodsInfo">
+      <CmdLine>
+        <![CDATA[
+        insert into Tb_GoodsInfo(GoodsId,SalePrice) values(@GoodsId,@SalePrice);
+        ]]>
+      </CmdLine>
+      <param name="@GoodsId" type="Int64"/>
+      <param name="@SalePrice" type="Decimal"/>
+    </SqlCmd>
+
+    <SqlCmd name="InsertGoodsCartGo">
+      <CmdLine>
+        <![CDATA[
+        insert into Tb_CartGo(UserId,StockCode,BuyCnt,CurPrice,TempUser,CreateTime)
+        values('@UserId','@StockCode',@BuyCnt,@CurPrice,@TempUser,'@CreateTime');
+        ]]>
+      </CmdLine>
+      <param name="@UserId" type="Int64"/>
+      <param name="@StockCode" type="Decimal"/>
+      <param name="@BuyCnt" type="Decimal"/>
+      <param name="@CurPrice" type="Decimal"/>
+      <param name="@TempUser" type="Decimal"/>
+      <param name="@CreateTime" type="Decimal"/>
+    </SqlCmd>
+
+    <SqlCmd name="GetUserCartgoInfo">
+      <CmdLine>
+        <![CDATA[
+       select userid as Ssid, stockCode as StockCode, goods.name as GoodsName,
+       BuyCnt, CurPrice, BuyCnt*CurPrice as TotalPrice from Tb_CartGo cartgo
+left join Tb_Goods goods on cartgo.StockCode=goods.code
+where IsPay!=1 and cartgo.userid='@ssid'
+        ]]>
+      </CmdLine>
+      <param name="@ssid" type="varchar(128)"/>
+    </SqlCmd>
+
+    <SqlCmd name="RmUserCartgo">
+      <CmdLine>
+        <![CDATA[
+delete  from Tb_CartGo where userid='@ssid' and stockCode='@code';
+        ]]>
+      </CmdLine>
+      <param name="@ssid" type="varchar(128)"/>
+      <param name="@code" type="varchar(128)"/>
+    </SqlCmd>
+    <SqlCmd name="GeTbUserInfos">
+      <CmdLine>
+        <![CDATA[
+      select * from Tb_UserInfo where userid=@ssid
+        ]]>
+      </CmdLine>
+      <param name="@ssid" type="Int64"/>
+    </SqlCmd>
+    <SqlCmd name="SubmitOrder">
+      <CmdLine>
+        <![CDATA[
+        update Tb_CartGo set IsPay=1,OrderId='@orderId'  where userid='@ssid'
+        ]]>
+      </CmdLine>
+      <param name="@ssid" type="Int64"/>
+      <param name="@orderId" type="string"/>
+    </SqlCmd>
+    <SqlCmd name="GetDeliveryArea">
+      <CmdLine>
+        <![CDATA[
+        select * from Tb_SaleArea;
+        ]]>
+      </CmdLine>
+    </SqlCmd>
+    <SqlCmd name="GeTbOrdersNotSend">
+      <CmdLine>
+        <![CDATA[
+        select order1.*,go.StockCode ,go.BuyCnt,go.CurPrice,goods.Name from 
+Tb_Order order1 left join Tb_CartGo go on order1.OrderId=go.OrderId 
+left JOIN Tb_Goods goods on goods.Code=go.StockCode
+        where ifnull(order1.IsSend,0)=0;
+        ]]>
+      </CmdLine>
+    </SqlCmd>
+    <SqlCmd name="GeTbSaleAreas">
+      <CmdLine>
+        <![CDATA[
+       select * from Tb_SaleArea;
+        ]]>
+      </CmdLine>
+    </SqlCmd>
+    <SqlCmd name="UpdateTbOrdersSend">
+      <CmdLine>
+        <![CDATA[
+       update Tb_Order set IsSend=1 where orderid='@orderId';
+        ]]>
+      </CmdLine>
+      <param name="@orderId" type="string"/>
+    </SqlCmd>
+  </SqlList>
+  <SqlList name="oracle">
+  </SqlList>
+</SqlRoot>

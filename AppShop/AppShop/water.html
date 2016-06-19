@@ -1,0 +1,275 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>首页-酒水</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=yes">
+    <link href="js/mobile/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
+    <link rel='stylesheet' id='camera-css' href="/css/camera.css" type='text/css' media='all'>
+    <link href="js/mobile/jquery.mobile.theme-1.4.5.min.css" rel="stylesheet" />
+    <link rel='stylesheet' href="/css/common.css" type='text/css' media='all'>
+    <script src="js/jquery-1.10.2.min.js"></script>
+
+    <script src="js/mobile/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="js/jssor.slider.mini.js"></script>
+
+    <style>
+        /**加载效果旋转**/
+        @-webkit-keyframes rotate {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+
+            50% {
+                -webkit-transform: rotate(180deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(180deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loadmore {
+            display: block;
+            line-height: 50px;
+            text-align: center;
+            color: #ccc;
+            font-size: 14px;
+        }
+
+            .loadmore span {
+                height: 20px;
+                width: 20px;
+                border-radius: 100%;
+                display: inline-block;
+                margin: 10px;
+                border: 2px solid #f60;
+                border-bottom-color: transparent;
+                vertical-align: middle;
+                -webkit-animation: rotate 0.75s 0 linear infinite;
+                animation: rotate 0.75s 0 linear infinite;
+            }
+
+        .loadover {
+            position: relative;
+            margin: 0 12px;
+            padding: 24px 0;
+            height: 20px;
+            line-height: 20px;
+            color: #909090;
+            text-align: center;
+        }
+
+            .loadover span {
+                position: relative;
+                display: inline-block;
+                padding: 0 6px;
+                height: 20px;
+                background: #F2F2F2;
+                z-index: 2;
+            }
+
+            .loadover:after {
+                content: ''position: absolute;
+                left: 0;
+                top: 50%;
+                width: 100%;
+                height: 1px;
+                background: #DCDCDC;
+                z-index: 1;
+            }
+        /* jssor slider bullet navigator skin 05 css */
+        /*
+        .jssorb05 div           (normal)
+        .jssorb05 div:hover     (normal mouseover)
+        .jssorb05 .av           (active)
+        .jssorb05 .av:hover     (active mouseover)
+        .jssorb05 .dn           (mousedown)
+        */
+        .jssorb05 {
+            position: absolute;
+        }
+
+            .jssorb05 div, .jssorb05 div:hover, .jssorb05 .av {
+                position: absolute;
+                /* size of bullet elment */
+                width: 16px;
+                height: 16px;
+                background: no-repeat;
+                overflow: hidden;
+                cursor: pointer;
+            }
+
+            .jssorb05 div {
+                background-position: -7px -7px;
+            }
+
+                .jssorb05 div:hover, .jssorb05 .av:hover {
+                    background-position: -37px -7px;
+                }
+
+            .jssorb05 .av {
+                background-position: -67px -7px;
+            }
+
+            .jssorb05 .dn, .jssorb05 .dn:hover {
+                background-position: -97px -7px;
+            }
+
+        /* jssor slider arrow navigator skin 12 css */
+        /*
+        .jssora12l                  (normal)
+        .jssora12r                  (normal)
+        .jssora12l:hover            (normal mouseover)
+        .jssora12r:hover            (normal mouseover)
+        .jssora12l.jssora12ldn      (mousedown)
+        .jssora12r.jssora12rdn      (mousedown)
+        */
+        .jssora12l, .jssora12r {
+            display: block;
+            position: absolute;
+            /* size of arrow element */
+            width: 30px;
+            height: 46px;
+            cursor: pointer;
+            background: no-repeat;
+            overflow: hidden;
+        }
+
+        .jssora12l {
+            background-position: -16px -37px;
+        }
+
+        .jssora12r {
+            background-position: -75px -37px;
+        }
+
+        .jssora12l:hover {
+            background-position: -136px -37px;
+        }
+
+        .jssora12r:hover {
+            background-position: -195px -37px;
+        }
+
+        .jssora12l.jssora12ldn {
+            background-position: -256px -37px;
+        }
+
+        .jssora12r.jssora12rdn {
+            background-position: -315px -37px;
+        }
+    </style>
+
+    <style>
+        .wHeader .ui-input-text {
+            margin-left: 55px;
+            width: 100px;
+            width: -moz-calc(100% - 190px);
+            width: -webkit-calc(100% - 190px);
+            width: calc(100% - 190px);
+            float: left;
+        }
+
+        .wHeader .ui-icon-search {
+            margin-left: 10px;
+            margin-top: 8px;
+        }
+
+        .wGoodsList img {
+            width: 50px;
+            width: -moz-calc(100% - 10px);
+            width: -webkit-calc(100% - 10px);
+            width: calc(100% - 10px);
+            height: -moz-calc(100% - 300px);
+            height: -webkit-calc(100% - 300px);
+            height: calc(100% - 300px);
+        }
+
+        .mypng img {
+            azimuth: expression( this.pngSet?this.pngSet=true:(this.nodeName == "IMG" && this.src.toLowerCase().indexOf('.png')>-1?(this.runtimeStyle.backgroundImage = "none", this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.src + "', sizingMethod='image')", this.src = "transparent.gif"):(this.origBg = this.origBg? this.origBg :this.currentStyle.backgroundImage.toString().replace('url("', '').replace('")', ''), this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.origBg + "', sizingMethod='crop')", this.runtimeStyle.backgroundImage = "none")), this.pngSet=true);
+        }
+
+        .goodsCnt {
+            width: 20px;
+        }
+
+        .goods_left {
+            float: left;
+            margin-top: 5px;
+            width: 50%;
+            text-align: center;
+        }
+
+            .goods_left img {
+                width: 100%;
+            }
+
+        .goods_right {
+            float: right;
+            margin-top: 5px;
+            width: 50%;
+            text-align: center;
+        }
+
+            .goods_right img {
+                width: 100%;
+            }
+
+        .greenBorder {
+            border: 1px solid green;
+        }
+    </style>
+
+
+
+</head>
+<body>
+    <div data-role="page" id="snackPage">
+        <div data-role="header">
+            <h1>饮料酒水</h1>
+            <div data-role="popup" id="popupBasic" data-ajax="false">
+                <p></p>
+            </div>
+        </div>
+
+        <div data-role="content" class="ui-content">
+            <div>
+                <h3>全部商品</h3>
+                <div id="goods_ListSnack" style="margin-top: 20px">
+
+                </div>
+            </div>
+        </div>
+
+        <div data-role="footer" data-position="fixed" data-id="footernav">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="index.html" data-icon="home" data-ajax="false">首页</a></li>
+                    <li><a href="cartgo.html" data-icon="arrow-r">购物车</a></li>
+                    <li><a href="feng.html" data-icon="arrow-r" data-ajax="false">丰利家</a></li>
+                    <li><a href="AdverInfo.html" data-icon="arrow-r" data-ajax="false">信息广场</a></li>
+                </ul>
+            </div>
+        </div>
+        <script type="text/javascript" src="/js/view/water.js?a=7"></script>
+    </div> 
+
+<script type="text/javascript" src="/js/common.js?v=1"></script>
+
+</body>
+
+</html>

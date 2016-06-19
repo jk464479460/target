@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>注册一个账户</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="js/mobile/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="js/mobile/jquery.mobile-1.4.5.min.js"></script>
+    <link rel='stylesheet' href="/css/common.css" type='text/css' media='all'>
+    <link href="js/mobile/jquery.mobile.theme-1.4.5.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div data-role="page" id="home">
+        <div data-position='fixed' data-role="header">
+            <a href="login.html" data-icon="arrow-l" data-iconpos="notext"></a>
+            <h1>注册用户送积分</h1>
+            <div data-role="popup" class="popupBasic" data-ajax="false">
+                <p>This is a completely basic popup, no options set.</p>
+            </div>
+        </div>
+
+        <div data-role="content" style="clear: both">
+            <form >
+                <div data-role="fieldcontain">
+                    <input type="text" data-theme="f" id="username" placeholder="用户名"/>
+                    <div><label id="errMsgUName">&nbsp;</label></div>
+                    <input type="password" data-theme="f" id="password1" placeholder="密码"/>
+                    <input type="password" data-theme="f" id="password2" placeholder="重复输入密码"/>
+                    <div><label id="errMsgPwd2">&nbsp;</label></div>
+                    <input type="text" id="phone" data-theme="f" placeholder="输入手机号" />
+                    <input type="button" id="btn" value="获取验证码" data-inline="true" style="background-color:forestgreen !important"/>
+                    <input type="text" data-theme="f" id="validateNumber" placeholder="输入验证码" />
+                </div>
+                <input id="btnReg" type="button" data-inline="true" value="注册" />
+            </form>
+            <span>成为注册用户后，享受特权：
+            <br/>1. 成功推荐一位新用户，推荐者可以持续获取被推荐者消费金额的5%返现
+            <br/>2. 通常会在消费后第二天返还您的支付账户
+            </span>
+            <script src="js/view/reg.js?v=5"></script>
+        </div>
+
+        <div data-role="footer" data-position="fixed" data-id="footernav">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="index.html" data-icon="home" data-ajax="false">首页</a></li>
+                    <li><a href="cartgo.html" data-icon="arrow-r">购物车</a></li>
+                    <li><a href="feng.html" data-icon="arrow-r" data-ajax="false">丰利家</a></li>
+                    <li><a href="AdverInfo.html" data-icon="arrow-r" data-ajax="false">信息广场</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<script src="js/common.js?v=1"></script>
+</body>
+
+
+</html>

@@ -1,0 +1,312 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>首页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=yes">
+    <link href="js/mobile/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
+    <link rel='stylesheet' id='camera-css' href="/css/camera.css" type='text/css' media='all'>
+    <link href="js/mobile/jquery.mobile.theme-1.4.5.min.css" rel="stylesheet" />
+    <!--<link href="css/photoswipe.css" type="text/css" rel="stylesheet" />
+    <link href="css/styles.css" type="text/css" rel="stylesheet" />-->
+    <!--<script type="text/javascript" src="js/klass.min.js"></script>-->
+    <!--<script type="text/javascript" src="js/code.photoswipe-3.0.5.min.js"></script>-->
+    <script src="js/jquery-1.10.2.min.js"></script>
+
+    <script src="js/mobile/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="js/jssor.slider.mini.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+
+            var jssor_1_SlideshowTransitions = [
+              {$Duration:1200,$Opacity:2}
+            ];
+
+            var jssor_1_options = {
+              $AutoPlay: true,
+              $SlideshowOptions: {
+                $Class: $JssorSlideshowRunner$,
+                $Transitions: jssor_1_SlideshowTransitions,
+                $TransitionsOrder: 1
+              },
+              $ArrowNavigatorOptions: {
+                $Class: $JssorArrowNavigator$
+              },
+              $BulletNavigatorOptions: {
+                $Class: $JssorBulletNavigator$
+              }
+            };
+
+            var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+
+            //responsive code begin
+            //you can remove responsive code if you don't want the slider scales while window resizing
+            function ScaleSlider() {
+                var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
+                if (refSize) {
+                    refSize = Math.min(refSize, 600);
+                    jssor_1_slider.$ScaleWidth(refSize);
+                }
+                else {
+                    window.setTimeout(ScaleSlider, 30);
+                }
+            }
+            ScaleSlider();
+            $(window).bind("load", ScaleSlider);
+            $(window).bind("resize", ScaleSlider);
+            $(window).bind("orientationchange", ScaleSlider);
+            //responsive code end
+        });
+    </script>
+
+<style>
+		/**加载效果旋转**/
+		@-webkit-keyframes rotate {0% {-webkit-transform: rotate(0deg);}50% {-webkit-transform: rotate(180deg);}100% {-webkit-transform: rotate(360deg);}}
+		@keyframes rotate {0% {transform: rotate(0deg);}50% {transform: rotate(180deg);}100% {transform: rotate(360deg);}}
+		
+		.loadmore {display:block;line-height: 50px;text-align:center;color:#ccc;font-size:14px;}
+		.loadmore span{height:20px;width: 20px;border-radius: 100%;display:inline-block;margin:10px;border:2px solid #f60;border-bottom-color: transparent;vertical-align: middle;-webkit-animation: rotate 0.75s 0 linear infinite;animation: rotate 0.75s 0 linear infinite;}
+		.loadover{position:relative;margin:0 12px;padding:24px 0;height:20px;line-height:20px;color:#909090;text-align: center;}
+		.loadover span{position:relative;display:inline-block;padding:0 6px;height:20px;background:#F2F2F2;z-index:2}
+		.loadover:after {content:''position: absolute;left: 0;top: 50%;width: 100%;height: 1px;background: #DCDCDC;z-index: 1;}
+            /* jssor slider bullet navigator skin 05 css */
+            /*
+        .jssorb05 div           (normal)
+        .jssorb05 div:hover     (normal mouseover)
+        .jssorb05 .av           (active)
+        .jssorb05 .av:hover     (active mouseover)
+        .jssorb05 .dn           (mousedown)
+        */
+     .jssorb05 {
+         position: absolute;
+     }
+
+    .jssorb05 div, .jssorb05 div:hover, .jssorb05 .av {
+        position: absolute;
+        /* size of bullet elment */
+        width: 16px;
+        height: 16px;
+        background: no-repeat;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .jssorb05 div {
+        background-position: -7px -7px;
+    }
+
+    .jssorb05 div:hover, .jssorb05 .av:hover {
+        background-position: -37px -7px;
+    }
+
+    .jssorb05 .av {
+        background-position: -67px -7px;
+    }
+
+    .jssorb05 .dn, .jssorb05 .dn:hover {
+        background-position: -97px -7px;
+    }
+
+    /* jssor slider arrow navigator skin 12 css */
+    /*
+        .jssora12l                  (normal)
+        .jssora12r                  (normal)
+        .jssora12l:hover            (normal mouseover)
+        .jssora12r:hover            (normal mouseover)
+        .jssora12l.jssora12ldn      (mousedown)
+        .jssora12r.jssora12rdn      (mousedown)
+        */
+    .jssora12l, .jssora12r {
+        display: block;
+        position: absolute;
+        /* size of arrow element */
+        width: 30px;
+        height: 46px;
+        cursor: pointer;
+        background:  no-repeat;
+        overflow: hidden;
+    }
+
+    .jssora12l {
+        background-position: -16px -37px;
+    }
+
+    .jssora12r {
+        background-position: -75px -37px;
+    }
+
+    .jssora12l:hover {
+        background-position: -136px -37px;
+    }
+
+    .jssora12r:hover {
+        background-position: -195px -37px;
+    }
+
+    .jssora12l.jssora12ldn {
+        background-position: -256px -37px;
+    }
+
+    .jssora12r.jssora12rdn {
+        background-position: -315px -37px;
+    }
+</style>
+
+    <style>
+        .wHeader .ui-input-text {
+            margin-left: 55px;
+            width: 100px;
+            width: -moz-calc(100% - 190px);
+            width: -webkit-calc(100% - 190px);
+            width: calc(100% - 190px);
+            float: left;
+        }
+
+        .wHeader .ui-icon-search {
+            margin-left: 10px;
+            margin-top: 8px;
+        }
+
+        .wGoodsList img {
+            width: 50px;
+            width: -moz-calc(100% - 10px);
+            width: -webkit-calc(100% - 10px);
+            width: calc(100% - 10px);
+            height: -moz-calc(100% - 300px);
+            height: -webkit-calc(100% - 300px);
+            height: calc(100% - 300px);
+        }
+
+        .mypng img {
+            azimuth: expression( this.pngSet?this.pngSet=true:(this.nodeName == "IMG" && this.src.toLowerCase().indexOf('.png')>-1?(this.runtimeStyle.backgroundImage = "none", this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.src + "', sizingMethod='image')", this.src = "transparent.gif"):(this.origBg = this.origBg? this.origBg :this.currentStyle.backgroundImage.toString().replace('url("', '').replace('")', ''), this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.origBg + "', sizingMethod='crop')", this.runtimeStyle.backgroundImage = "none")), this.pngSet=true);
+        }
+
+        .goodsCnt {
+            width: 20px;
+        }
+
+        .goods_left {
+            float: left;
+            width: 50%;
+        }
+        .goods_left img {
+            width: 100%;
+        }
+        .goods_right {
+            float: right;
+            width: 50%;
+        }
+        .goods_right img {
+            width: 100%;
+        }
+    </style>
+    <script>
+        $(document).bind("mobileinit", function () {
+
+            $.extend($.mobile, {
+
+                defaultPageTransition: 'none'
+
+                //defaultPageTransition:'none'
+
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <div data-role="page" id="home">
+        <div data-role="header" style="background: #228B22;" class="wHeader">
+            <div>
+                <a href="login.html" style="float: left; text-shadow: none; color: blue; text-decoration: none; margin-top: 14px; font-size: 12px">登陆</a>
+                <input type="text" placeholder="输入搜索" id="sName"/>
+                <a href="javascript:void(0)" id="anylink" data-role="button" data-icon="search" style="">搜索</a>
+            </div>
+            <div data-role="popup" id="popupBasic" data-ajax="false">
+                <p>This is a completely basic popup, no options set.</p>
+            </div>
+        </div>
+
+        <div data-role="content" style="clear: both">
+
+            <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 600px; height: 300px; overflow: hidden; visibility: hidden;">
+                <!-- Loading Screen -->
+                <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
+                    <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
+                    <div style="position: absolute; display: block; background: no-repeat center center; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
+                </div>
+                <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 600px; height: 300px; overflow: hidden;">
+                    <div data-p="112.50" style="display: none;">
+                        <img data-u="image" src="images/slides/leaf.jpg" />
+                    </div>
+                    <div data-p="112.50" style="display: none;">
+                        <img data-u="image" src="images/slides/road.jpg" />
+                    </div>
+
+
+                </div>
+                <!-- Bullet Navigator -->
+                <div data-u="navigator" class="jssorb05" style="bottom: 16px; right: 16px;" data-autocenter="1">
+                    <!-- bullet navigator item prototype -->
+                    <div data-u="prototype" style="width: 16px; height: 16px;"></div>
+                </div>
+                <!-- Arrow Navigator -->
+                <span data-u="arrowleft" class="jssora12l" style="top: 0px; left: 0px; width: 30px; height: 46px;" data-autocenter="2"></span>
+                <span data-u="arrowright" class="jssora12r" style="top: 0px; right: 0px; width: 30px; height: 46px;" data-autocenter="2"></span>
+            </div>
+
+            <div class="wGoodsList">
+                <h3>摊位分布</h3>
+                <div data-role="navbar">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <img src="http://img12.360buyimg.com/n1/jfs/t2371/360/2766683556/84824/734b96b9/56f116a7N80760c83.jpg" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="http://img12.360buyimg.com/n1/jfs/t2371/360/2766683556/84824/734b96b9/56f116a7N80760c83.jpg" /></a>
+                        </li>
+                    </ul>
+                </div>
+                <ul data-role="listview" style="display: inline"></ul>
+
+            </div>
+            <div>
+                <h3>全部商品</h3>
+                <div id="goods_List" style="margin-top: 20px">
+
+                </div>
+            </div>
+            <script type="text/javascript" src="/js/view/index.js?a=28"></script>
+        </div>
+
+
+        <div data-role="footer" data-position="fixed" data-id="footernav">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="index.html?b=10" data-icon="home">首页</a></li>
+                    <li><a href="cartgo.html?b=7"  data-icon="arrow-r">购物车</a></li>
+                    <li><a href="c.html"  data-icon="arrow-r">我的佳荷</a></li>
+                </ul>
+            </div>
+        </div>
+       
+    </div>
+
+<script type="text/javascript">
+   
+</script>
+<script type="text/javascript" src="/js/common.js?v=1"></script>
+    <script>
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

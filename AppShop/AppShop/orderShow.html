@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>下单成功</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link href="js/mobile/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
+    <link href="js/mobile/jquery.mobile.theme-1.4.5.min.css" rel="stylesheet" />
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="js/mobile/jquery.mobile-1.4.5.min.js"></script>
+
+    <style>
+        .ui-input-text {
+            background-color: forestgreen;
+        }
+
+        .picGoods {
+            margin-top: 15px;
+        }
+    </style>
+
+</head>
+<body>
+    <div data-role="page" id="home">
+        <div data-position='fixed' data-role="header">
+            <a href="index.html" data-icon="arrow-l" data-iconpos="notext" data-ajax="false"></a>
+            <div data-role="popup" id="popupBasic" data-ajax="false">
+                <p>This is a completely basic popup, no options set.</p>
+            </div>
+        </div>
+
+        <div data-role="content" >
+            客官下单成功啦,正在配送中... ... 牢记订单号：<label id="orderCode"></label>，收货后请及时付款哦！
+            <script type="text/javascript" src="js/view/orderShow.js?v=1"></script>
+        </div>
+
+        <div data-role="footer" data-position="fixed" data-id="footernav">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="index.html" data-icon="home" data-ajax="false">首页</a></li>
+                    <li><a href="cartgo.html" data-icon="arrow-r">购物车</a></li>
+                    <li><a href="feng.html" data-icon="arrow-r" data-ajax="false">丰利家</a></li>
+                    <li><a href="AdverInfo.html" data-icon="arrow-r" data-ajax="false">信息广场</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="js/common.js?v=1"></script>
+    <script type="text/javascript">
+    </script>
+</body>
+</html>

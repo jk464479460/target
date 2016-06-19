@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>欢迎来到</title>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.css" />
+		<link rel='stylesheet' id='camera-css'  href='../css/camera.css' type='text/css' media='all'> 
+
+       <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.js"></script>
+		<script src="js/jquery.easing.1.3.js"
+			   type="text/javascript"></script>
+		<script src="js/camera.min.js"
+			   type="text/javascript"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('#camera_wrap_1').camera({
+				time: 5000,
+					thumbnails:false
+				})
+			});
+		</script>
+	<style>
+	.wHeader{
+		background:#228B22;
+		text-shadow:none;
+		text-align:center;
+	}
+	.wSearchTxt{
+		background:white;
+		float:left;
+		margin:0 auto;
+		vertical-align:middle;
+		color:black;
+		margin-left:80px;
+	}
+	.wSearchBt{
+		margin:0 auto;
+		//margin-bottom:6px;
+		vertical-align:middle;
+		float:right;
+	}
+	.camera_pag{
+		display:none;
+	}
+	.wGoodsList li{list-style:none;float:left}
+	.wGoodsList img{
+		width:100px;
+		width:-moz-calc(100% - 250px);
+		width:-webkit-calc(100% - 250px);
+		width: calc(100% - 250px);
+		height:-moz-calc(100% - 250px);
+		height:-webkit-calc(100% - 250px);
+		height: calc(100% - 250px);
+	}
+	</style>
+	</head>
+    <body>
+        <div data-role="page" id="home">
+            <div data-role="header" class="wHeader">
+			<div style="margin:6px 0">
+				<input class="wSearchTxt" type="text" placeholder="输入搜索" style="width:100px;width:-moz-calc(100% - 190px);width:-webkit-calc(100% - 190px);width: calc(100% - 190px);"/>
+				<a class="wSearchBt" href="#anylink" data-role="button" data-icon="search">搜索</a>
+			</div>
+               
+            </div>
+            <div data-role="content">
+			<div>
+				<p>热烈欢迎总部领导前来视察！</p>
+				<div class="camera_wrap camera_azure_skin" id="camera_wrap_1">
+						<div data-thumb="../images/slides/thumbs/bridge.jpg" data-src="../images/slides/bridge.jpg" data-dom-cache="true">
+							<div class="camera_caption fadeFromBottom">
+								欢迎XXX开业图片<a href="www.baidu.com">have a look</a>
+							</div>
+						</div>
+						<div data-thumb="../images/slides/thumbs/leaf.jpg" data-src="../images/slides/leaf.jpg" data-dom-cache="true">
+							<div class="camera_caption fadeFromBottom">
+								巨优惠图片 <a href="www.baidu.com">have a look</a>
+							</div>
+						</div>
+						<div data-thumb="../images/slides/thumbs/road.jpg" data-src="../images/slides/road.jpg" data-dom-cache="true">
+							<div class="camera_caption fadeFromBottom">
+								<em>超市简介</em><a href="www.baidu.com">have a look</a>
+							</div>
+						</div>
+						<div data-thumb="../images/slides/thumbs/sea.jpg" data-src="../images/slides/sea.jpg" data-dom-cache="true">
+							<div class="camera_caption fadeFromBottom">
+								本区风光 <a href="www.baidu.com">have a look</a>
+							</div>
+						</div>
+						
+				</div><!-- #camera_wrap_1 -->
+				</div>
+				
+				<div class="wGoodsList">
+					<h3>摊位分布</h3>
+					<ul style="display:inline" data-role="listview">
+					<li>
+					<a href="#"><img src="http://img12.360buyimg.com/n1/jfs/t2371/360/2766683556/84824/734b96b9/56f116a7N80760c83.jpg"/>
+					</a>
+					</li>
+					<li><img src="http://img12.360buyimg.com/n1/jfs/t2371/360/2766683556/84824/734b96b9/56f116a7N80760c83.jpg"/></a>
+					</li>
+					</ul>
+
+				</div>
+			</div>
+			</div>
+            
+			<div data-role="footer" data-position="fixed" data-id="footernav">  
+				<div data-role="navbar">  
+					<ul>  
+						<li><a href="a.html" class="ui-btn-active">首页</a></li>  
+						<li><a href="b.html" >购物车</a></li>  
+						<li><a href="c.html" >我的佳荷</a></li>  
+					</ul>  
+				</div>  
+			</div>  
+        </div>
+    </body>
+</html>

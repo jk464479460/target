@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SqlRoot>
+  <SqlList name="sqlServer">
+    <SqlCmd name="DeleteRolesById">
+      <CmdLine>
+        <![CDATA[
+		delete from tb_usergroup where id in(@roles)
+	]]>
+      </CmdLine>
+      <param name="@roles" type="string"/>
+    </SqlCmd>
+    <SqlCmd name="DeleteUserById">
+      <CmdLine>
+        <![CDATA[
+		delete from tb_user where id in(@roles)
+	]]>
+      </CmdLine>
+      <param name="@roles" type="string"/>
+    </SqlCmd>
+    <SqlCmd name="GetBlogAll">
+      <CmdLine>
+        <![CDATA[
+		select * from blogs --where blogid=@BlogId
+	]]>
+      </CmdLine>
+    </SqlCmd>
+
+    <SqlCmd name="GetBlogTitle">
+      <CmdLine>
+        <![CDATA[
+		select p.PostId, p.Title,b.Name from Posts p
+left join Blogs b on p.BlogId=b.BlogId
+
+	]]>
+      </CmdLine>
+    </SqlCmd>
+  </SqlList>
+  <SqlList name="mySql">
+    <SqlCmd name="SearchGoodsByName">
+      <CmdLine>
+        <![CDATA[
+		select good.Code,good.Name as GoodsName,good.Numbers as StockNum,(info.SalePrice*info.Discount) as Price,good.SaleCount from Tb_Goods good left join Tb_GoodsInfo info
+    on good.Id=info.GoodsId
+    where 1=1 and IsShow=1 @whereStr 
+	]]>
+      </CmdLine>
+      <param name="@whereStr" type="string"/>
+    </SqlCmd>
+
+    <SqlCmd name="InsertGoodsInfo">
+      <CmdLine>
+        <![CDATA[
+        insert into Tb_GoodsInfo(GoodsId,SalePrice, Discount) values(@GoodsId,'@SalePrice', @Discount);
+        ]]>
+      </CmdLine>
+      <param name="@GoodsId" type="Int64"/>
+      <param name="@SalePrice" type="Decimal"/>
+     <param name="@Discount" type="Decimal"/>
+    </SqlCmd>
+
+    <SqlCmd name="InsertGoodsCartGo">
+      <CmdLine>
+        <![CDATA[
+        insert into Tb_CartGo(UserId,StockCode,BuyCnt,CurPrice,TempUser,CreateTime)
+        values('@UserId','@StockCode',@BuyCnt,@CurPrice,@TempUser,'@CreateTime');
+        ]]>
+      </CmdLine>
+      <param name="@UserId" type="Int64"/>
+      <param name="@StockCode" type="Decimal"/>
+      <param name="@BuyCnt" type="Decimal"/>
+      <param name="@CurPrice" type="Decimal"/>
+      <param name="@TempUser" type="Decimal"/>
+      <param name="@CreateTime" type="Decimal"/>
+    </SqlCmd>
+
+    <SqlCmd name="GetUserCartgoInfo">
+      <CmdLine>
+        <![CDATA[
+       select userid as Ssid, stockCode as StockCode, goods.name as GoodsName,
+       BuyCnt, CurPrice, BuyCnt*CurPrice as TotalPrice from Tb_CartGo cartgo
+left join Tb_Goods goods on cartgo.StockCode=goods.code
+where IsPay!=1 and cartgo.userid='@ssid'
+        ]]>
+      </CmdLine>
+      <param name="@ssid" type="varchar(128)"/>
+    </SqlCmd>
+    
+     <SqlCmd name="UpdateCartGoInfo">
+      <CmdLine>
+        <![CDATA[
+     update Tb_CartGo set UserId='@userId' where UserId='@Oldid';
+        ]]>
+      </CmdLine>
+      <param name="@userId" type="varchar(128)"/>
+       <param name="@Oldid" type="varchar(128)"/>
+    </SqlCmd>
+
+    <SqlCmd name="RmUserCartgo">
+      <CmdLine>
+        <![CDATA[
+delete  from Tb_CartGo where userid='@ssid' and stockCode='@code' and IsPay=0;
+        ]]>
+      </CmdLine>
+      <param name="@ssid" type="varchar(128)"/>
+      <param name="@code" type="varchar(128)"/>
+    </SqlCmd>
+     <SqlCmd name="AddBuyCnt">
+      <CmdLine>
+        <![CDATA[
+update Tb_CartGo set BuyCnt=@cnt where userid='@ssid' and stockCode='@code' and IsPay=0;
+        ]]>
+      </CmdLine>
+      <param name="@ssid" type="varchar(128)"/>
+      <param name="@code" type="varchar(128)"/>
+       <param name="@cnt" type="int"/>
+    </SqlCmd>
+    <SqlCmd name="GeTbUserInfos">
+      <CmdLine>
+        <![CDATA[
+      select * from Tb_UserInfo where userid=(select id from Tb_User where Name='@ssid')
+        ]]>
+      </CmdLine>
+      <param name="@ssid" type="Int64"/>
+    </SqlCmd>
+    <SqlCmd name="GeTbUserInfos">
+      <CmdLine>
+        <![CDATA[
+      select * from Tb_UserInfo where userid=(select id from Tb_User where Name='@ssid')
+        ]]>
+      </CmdLine>
+      <param name="@ssid" type="Int64"/>
+    </SqlCmd>
+     <SqlCmd name="GeTbUserByName">
+      <CmdLine>
+        <![CDATA[
+      select * from Tb_User where Name='@name'
+        ]]>
+      </CmdLine>
+      <param name="@name" type="string"/>
+    </SqlCmd>
+    <SqlCmd name="SubmitOrder">
+      <CmdLine>
+        <![CDATA[
+        
+        update Tb_CartGo set IsPay=1,OrderId='@orderId'  where userid='@ssid' and IsPay<>1
+        ]]>
+      </CmdLine>
+      <param name="@ssid" type="Int64"/>
+      <param name="@orderId" type="string"/>
+    </SqlCmd>
+    <SqlCmd name="GeTbSaleAreas">
+      <CmdLine>
+        <![CDATA[
+       select * from Tb_SaleArea;
+        ]]>
+      </CmdLine>
+    </SqlCmd>
+    <SqlCmd name="InsertUserInfo">
+      <CmdLine>
+        <![CDATA[
+       insert into Tb_UserInfo(UserId,Address,Phone1) values(@UserId, '@Address','@Phone');
+        ]]>
+      </CmdLine>
+      <param name="@UserId" type="Int64"/>
+      <param name="@Address" type="string"/>
+      <param name="@Phone" type="string"/>
+    </SqlCmd>
+    <SqlCmd name="GetPostInfos">
+      <CmdLine>
+        <![CDATA[
+        select Id,Title,UserId as User, CreateTime as Time, ViewCount as Count
+        ,PostText as Content from Tb_PostInfo where IsShow=1;
+      ]]>
+      </CmdLine>
+      
+    </SqlCmd>
+    <SqlCmd name="UpdatePostInfos">
+      <CmdLine>
+        <![CDATA[
+       update Tb_PostInfo set ViewCount=ViewCount+1 where Id=@Id;
+      ]]>
+      </CmdLine>
+      <param name="@Id" type="Int64"/>
+    </SqlCmd>
+  </SqlList>
+  <SqlList name="oracle">
+  </SqlList>
+</SqlRoot>

@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>个人信息</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="js/mobile/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
+    <link href="js/mobile/jquery.mobile.theme-1.4.5.min.css" rel="stylesheet" />
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+    <script src="js/mobile/jquery.mobile-1.4.5.min.js"></script>
+    <link rel='stylesheet' href="/css/common.css" type='text/css' media='all'>
+
+</head>
+<body>
+    <div data-role="page" id="home">
+        <div data-position='fixed' data-role="header">
+            <h1>我的主页</h1>
+            <div data-role="popup" id="popupBasic" data-ajax="false">
+                <p>This is a completely basic popup, no options set.</p>
+            </div>
+        </div>
+
+        <div data-role="content" style="clear: both">
+            <ul data-role="listview" data-inset="true">
+                <li>
+                    <a href="#ownerInfoPage" data-transition="slide">
+                        <h2>修改个人密码</h2>
+                    </a>
+                </li>
+                <li>
+                    <a href="#ownerAddress" data-transition="slide">
+                        <h2>修改配送地址</h2>
+                    </a>
+                </li>
+                <li>
+                    <a href="#postPapaer" data-transition="slide">
+                        <h2>免费发布简单信息啦</h2>
+                    </a>
+                </li>
+                <li>
+                    <a href="#recommendUser" data-transition="slide">
+                        <h2>我推荐的人</h2>
+                    </a>
+                </li>
+            </ul>
+            <script src="js/view/feng.js?v=8"></script>
+        </div>
+
+        <div data-role="footer" data-position="fixed" data-id="footernav">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="index.html?b=9" class="ui-btn-active" data-icon="home" data-ajax="false">首页</a></li>
+                    <li><a href="cartgo.html" data-icon="arrow-r">购物车</a></li>
+                    <li><a href="feng.html" data-icon="arrow-r" data-ajax="false">丰利家</a></li>
+                    <li><a href="AdverInfo.html" data-icon="home" data-ajax="false">信息广场</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div data-role="page" id="ownerInfoPage">
+        <div data-role="header">
+            <a href="#home" data-icon="arrow-l" data-iconpos="notext"></a>
+            <div data-role="popup" class="popupBasic" data-ajax="false">
+                <p>This is a completely basic popup, no options set.</p>
+            </div>
+        </div>
+
+        <div data-role="content" style="clear: both">
+            <form method="POST">
+                <div data-role="fieldcontain">
+                    <input type="password" data-theme="f" style='background-position: right center; background-repeat: no-repeat;' id="oldPass" placeholder="旧密码" />
+                    <div>
+                        <label id="errMsgUName">&nbsp;</label>
+                    </div>
+                  
+                    <input type="password" data-theme="f" id="password1" placeholder="新密码" />
+                    <input type="password" data-theme="f" id="password2" placeholder="重复输入密码" />
+                    <div>
+                        <label id="errMsgPwd2">&nbsp;</label>
+                    </div>
+                  
+                </div>
+                <input id="btnReg" type="button" data-inline="true" value="提交" />
+            </form>
+            
+        </div>
+
+        <div data-role="footer" data-position="fixed" data-id="footernav">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="index.html" data-icon="home" data-ajax="false">首页</a></li>
+                    <li><a href="cartgo.html" data-icon="arrow-r">购物车</a></li>
+                    <li><a href="feng.html" data-icon="arrow-r" data-ajax="false">丰利家</a></li>
+                    <li><a href="AdverInfo.html" data-icon="arrow-r" data-ajax="false">信息广场</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div data-role="page" id="ownerAddress">
+        <div data-position='fixed' data-role="header">
+            <a href="#home" data-icon="arrow-l" data-iconpos="notext"></a>
+            <div data-role="popup" class="popupBasic" data-ajax="false">
+                <p>This is a completely basic popup, no options set.</p>
+            </div>
+        </div>
+
+        <div data-role="content" style="clear: both">
+            <div>
+                <label>配送地址(必填):</label>
+                <select name="day" id="day" data-native-menu="false"></select>
+                <div style="height: 47px;">
+                    <label id="addressLb" style="width: 100%">无配送地址信息</label>
+                    <a id="editAddress" data-role="none" href="javascript:void(0)" style="float: right">编辑</a>
+                </div>
+               
+                <input class="newAddressTxt" style="display: none"/>
+                <a class="newAddressOver" style="display: none" data-role="none" href="javascript:void(0)">完成</a>
+                <input type="button" id="saveAddress" value="提交" data-inline="true" />
+            </div>
+           
+        </div>
+
+        <div data-role="footer" data-position="fixed" data-id="footernav">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="index.html" data-icon="home" data-ajax="false">首页</a></li>
+                    <li><a href="cartgo.html" data-icon="arrow-r">购物车</a></li>
+                    <li><a href="feng.html" data-icon="arrow-r" data-ajax="false">丰利家</a></li>
+                    <li><a href="AdverInfo.html" data-icon="arrow-r" data-ajax="false">信息广场</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div data-role="page" id="postPapaer">
+        <div data-role="header">
+            <a href="#home" data-icon="arrow-l" data-iconpos="notext"></a>
+         
+            <div data-role="popup" class="popupBasic" data-ajax="false">
+                <p>This is a completely basic popup, no options set.</p>
+            </div>
+        </div>
+
+        <div data-role="content" style="margin-top: 20px;">
+            <span style="color: red; font-size: 13px;">发帖须知：标题不大于15字，内容不大于55字。个人免费发送简短公告，本站不牟利，不承担任何法律问题。如果发生法律问题，会依法追究用户个人。如果帖子被举报，本站有权删除或重新编辑。</span>
+            <input type="text" id="textTitle" placeholder="请输入标题"/>
+            <textarea id="PostText">
+                
+            </textarea>
+            <input type="button" id="savePostText" value="提交" data-inline="true" />
+            <!--<hr />
+            <h2>已发帖子</h2>-->
+        </div>
+
+        <div data-role="footer" data-position="fixed" data-id="footernav">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="index.html" data-icon="home" data-ajax="false">首页</a></li>
+                    <li><a href="cartgo.html" data-icon="arrow-r">购物车</a></li>
+                    <li><a href="feng.html" data-icon="arrow-r" data-ajax="false">丰利家</a></li>
+                    <li><a href="AdverInfo.html" data-icon="arrow-r" data-ajax="false">信息广场</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div data-role="page" id="recommendUser">
+        <div data-role="header">
+            <a href="#home" data-icon="arrow-l" data-iconpos="notext"></a>
+
+            <div data-role="popup" class="popupBasic" data-ajax="false">
+                <p></p>
+            </div>
+        </div>
+
+        <div data-role="content" style="margin-top: 20px;">
+            <h2>推荐人列表</h2>
+            <ul data-role="listview" data-inset="true" id="recUserList">
+                <li>您还未推荐人哦</li>
+            </ul>
+            <h2>我要推荐</h2>
+            <div>
+                <input id="recUser" type="text" placeholder="请输入注册用户名"/>
+                <input id="recUserPhone" type="text" placeholder="请输入注册用户手机号" />
+                <input id="submitRecUser" type="button" value="提交"/>
+            </div>
+        </div>
+
+        <div data-role="footer" data-position="fixed" data-id="footernav">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="index.html" data-icon="home" data-ajax="false">首页</a></li>
+                    <li><a href="cartgo.html" data-icon="arrow-r">购物车</a></li>
+                    <li><a href="feng.html" data-icon="arrow-r" data-ajax="false">丰利家</a></li>
+                    <li><a href="AdverInfo.html" data-icon="arrow-r" data-ajax="false">信息广场</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="js/common.js?v=1"></script>
+</body>
+</html>
